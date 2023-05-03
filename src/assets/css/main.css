@@ -91,6 +91,38 @@
   font-weight: 700;
 }
 
+section.cards {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.card-item {
+  align-items: center;
+  max-width: 100%;
+  /* height: 300px; */
+  display: flex;
+  box-sizing: border-box;
+  flex-direction: column;
+  font-size: 12pt;
+  margin-top: 12px;
+  margin-bottom: 12px;
+  margin-left: 15px;
+  margin-right: 15px;
+  padding: 16px;
+  border-radius: 8px;
+  box-shadow: 10px 10px 39px 0px rgba(114, 114, 114, 0.1);
+  line-height: 18px;
+  text-align: left;
+  border-width: 1px;
+  border-style: solid;
+}
+
+.card-item img {
+  width: 75%;
+}
+
 @media only screen and (max-width:767px) {
   #about {
     display: none;
