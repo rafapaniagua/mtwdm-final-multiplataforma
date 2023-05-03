@@ -123,6 +123,20 @@ section.cards {
   width: 75%;
 }
 
+#footer-page {
+  background: #171717;
+  color: #ddd;
+}
+
+.footer-row-container {
+  border-top: none;
+  max-width: none;
+  margin-left: auto;
+  margin-right: auto;
+  padding-left: 40px;
+  padding-right: 40px;
+}
+
 @media only screen and (max-width:767px) {
   #about {
     display: none;
