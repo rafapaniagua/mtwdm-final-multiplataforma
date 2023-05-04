@@ -150,7 +150,7 @@ section.cards {
 
 .footer-row-section-col {
     display: flex;
-    flex-direction: column-reverse;
+    flex-direction: column;
 }
 
 .footer-row-section-blocks .footer-row-section-col:not(:last-child) {
@@ -243,7 +243,11 @@ ul {
     font-weight: 700;
 }
 
-.footer-email {
+.footer-help {
+    flex-direction: column;
+}
+
+.footer-textfield {
     font-size: 16px;
     line-height: 16px;
     font-family: Helvetica,Helvetica Neue,Arial,Lucida Grande,sans-serif;
@@ -259,6 +263,10 @@ ul {
     border-radius: 0;
     -webkit-appearance: none;
     box-sizing: border-box;
+}
+
+#footer-colaborador li {
+    list-style: disc;
 }
 
 .footer-button {

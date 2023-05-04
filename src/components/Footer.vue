@@ -76,25 +76,28 @@
           </div>
         </div>
 
-        <div>
-          <h6 class="footer-title">Newsletter</h6>
+        <div class="footer-row-section-col footer-section-text-block footer-section-text-block-with-text footer-help">
+          <h6 class="footer-title">¿Necesitas ayuda?</h6>
 
           <div>
             <p>
-              Suscríbete a nuestro newsletter y no te pierdas lanzamientos y
-              novedades.
+              Puedes realizar tu pregunta en el siguiente espacio. En seguida haz click en el botón <strong>'Solicitar asistencia'</strong>
+              y un colaborador se pondrá en contacto contigo al instante.
             </p>
           </div>
 
           <div>
-            <form>
-              <p>
-                <input type="email" placeholder="Correo electrónico" class="footer-email" />
-              </p>
-              <button class="footer-button">
-                Enviar
-              </button>
-            </form>
+            <p>
+              <input type="text" placeholder="Ingresa tu pregunta" class="footer-textfield" />
+            </p>
+          </div>
+
+          <div id="footer-colaborador"></div>
+
+          <div>
+            <button class="footer-button" @click="asignarColaborador">
+              Solicitar asistencia
+            </button>
           </div>
         </div>
       </div>
@@ -104,7 +107,60 @@
 
 <script>
 export default {
+  data() {
+    return {
+      colaborador: null
+    }
+  },
+  methods: {
+    async asignarColaborador() {
+      let footerColaborador = document.getElementById('footer-colaborador')
 
+      footerColaborador.innerHTML = ''
+
+      fetch('https://randomuser.me/api/')
+      .then(res => res.json())
+      .then(data => {
+        this.colaborador = data.results[0]
+
+        let img = document.createElement('img')
+        img.setAttribute('src', this.colaborador.picture.large)
+        img.setAttribute('alt', 'Colaborador')
+
+        let p = document.createElement('p')
+        let textoParrafo = document.createTextNode(`Mi nombre es ${this.colaborador.name.first} ${this.colaborador.name.last}, estoy validando tu pregunta.
+        Por favor espera un momento. Si deseas contactarme de manera personal puedes hacerlo a través de los siguientes canales:`)
+        p.appendChild(textoParrafo)
+
+        let ul = document.createElement('ul')
+        
+        let liEmail = document.createElement('li')
+        let textoEmail = document.createTextNode(`Email: ${this.colaborador.email}`)
+        liEmail.appendChild(textoEmail)
+
+        let liTelefono = document.createElement('li')
+        let textoTelefono = document.createTextNode(`Teléfono: ${this.colaborador.phone}`)
+        liTelefono.appendChild(textoTelefono)
+
+        let liCelular = document.createElement('li')
+        let textoCelular = document.createTextNode(`Celular: ${this.colaborador.cell}`)
+        liCelular.appendChild(textoCelular)
+
+        ul.appendChild(liEmail)
+        ul.appendChild(liTelefono)
+        ul.appendChild(liCelular)
+
+        footerColaborador.appendChild(img)
+        footerColaborador.appendChild(p)
+        footerColaborador.appendChild(ul)
+      })
+      .catch(err => {
+        this.colaborador = null
+        footerColaborador.innerHTML = ''
+        alert(err)
+      })
+    }
+  }
 }
 </script>
 
